@@ -77,6 +77,7 @@ class Container extends Component {
         return (
             <div className="container">
                 <h1 className="title">Memory Click Game</h1>
+                <h5 className="description">(Don't click the same one twice!)</h5>
                 <h3 className="score">Current Score: {this.state.score}</h3>
                 <h3 className="score">High Score: {this.state.highScore}</h3>
                 <Rows >

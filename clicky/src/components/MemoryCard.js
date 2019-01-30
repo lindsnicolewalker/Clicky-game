@@ -3,8 +3,8 @@ import React from 'react';
 const styles = {
     image: {
         margin:50, 
-        height: "300px",
-        width: "300px"
+        height: "250px",
+        width: "250px"
     }
 }
 
@@ -13,7 +13,7 @@ const MemoryCard = (props) => {
     return (
         <div 
         id={props.id}
-        onClick = {() => props.handleClick(props.friend.id)}
+        onClick = {() => props.handleClick(props.id)}
         className = "col-lg-3">
         <div className="image-container">
         <img 

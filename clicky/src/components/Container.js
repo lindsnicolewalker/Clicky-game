@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import MemoryCard from "./MemoryCard";
-import Row from "./Row";
+import Rows from "./Rows";
 import PlayerChoices from "../PlayerChoices.json"
 
 class Container extends Component {
@@ -16,12 +16,12 @@ class Container extends Component {
         console.log(this.state.cards);
     }
 
-    shuffleCards = cards => {
-        for (let i = cards.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [cards[i], cards[j]] = [cards[j], cards[i]];
+    shuffleCards = cardsArray => {
+        for (let i = cardsArray.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * 12);
+            [cardsArray[i], cardsArray[j]] = [cardsArray[j], cardsArray[i]];
         }
-        return cards;
+        return cardsArray;
     };
 
     handleGameClicks = event => {
@@ -65,25 +65,23 @@ class Container extends Component {
 
     restartGame = () => {
         if (this.state.score > this.state.highScore) {
-            this.state.highScore = this.state.score; // this is janky, should be setState
+            this.state.highScore = this.state.score; 
         };
-        // reset score
         this.state.score = 0;
-        // set "clicked" status to false for all cards
         this.state.cards.map(card => (
-            card["clicked"] = false // this is janky, should be setState
+            card["clicked"] = false 
         ));
     }
 
     render() {
         return (
             <div className="container">
-                <h1 className="title">Memory Challenge</h1>
+                <h1 className="title">Memory Click Game</h1>
                 <h3 className="score">Current Score: {this.state.score}</h3>
                 <h3 className="score">High Score: {this.state.highScore}</h3>
-                <Row >
+                <Rows >
                     {this.showCards()}
-                </Row>
+                </Rows>
             </div>
         )
     }

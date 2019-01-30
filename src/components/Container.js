@@ -13,7 +13,6 @@ class Container extends Component {
 
     componentDidMount() {
         this.setState({ cards: this.shuffleCards(this.state.cards) });
-        console.log(this.state.cards);
     }
 
     shuffleCards = cardsArray => {
@@ -30,13 +29,10 @@ class Container extends Component {
         for (let i = 0; i < this.state.cards.length; i++) {
             if (this.state.cards[i]["id"] === id) {
                 if (this.state.cards[i]["clicked"] === true) {
-                    console.log("Game over");
-                    
                     this.restartGame();
                 } else {
                     this.state.cards[i]["clicked"] = true; 
                     this.state.score++; 
-                    console.log(`Score: ${this.state.score}`);
 
                     if (this.state.score > 7) {
                         console.log("Winner!");
@@ -47,7 +43,6 @@ class Container extends Component {
         }
 
         this.setState({ cards: this.shuffleCards(this.state.cards) });
-        console.log(this.state.cards);
     };
 
     showCards = () => {
